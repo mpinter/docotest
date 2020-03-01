@@ -1,4 +1,38 @@
-# Setup build pipeline with expo
+# Managed Expo App Playground
+
+What's set up in this project:
+
+- iOs AppStore, with TestFlight delivery and automatic publish through github actions
+- Android privacy_policy through github pages
+- eslint, prettier, VS Code auto organize imports
+- babel-plugin-module-resolver, and component file structure
+- Font setup through Expo, Text Component, AppLoading component to keep splash visible until fonts are ready
+
+* TODO react-navigation
+* TODO Sentry
+* TODO Storybook
+* TODO Storybook Jest Snapshots
+* TODO Detox
+
+## Eslint / Typescript / Babel setup (with module-resolver for easy relative paths)
+
+The relevant files to checkout are `tsconfig.json`, `babel.config.js`, `.prettierrc`, `.eslintrc` and `.vscode/settings.json`.
+
+The devDependecies to install are as follows:
+
+```
+yarn --dev @typescript-eslint/eslint-plugin @typescript-eslint/parser babel-plugin-module-resolver eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks prettier
+```
+
+## Font Setup
+
+Follow this to setup your Font loading in expo managed projects -
+
+This is also super useful - https://docs.expo.io/versions/latest/sdk/app-loading/
+
+Check out `components/ui/text` to see how to deal with mapping between font families and font weights.
+
+## Setup build pipeline with expo
 
 This guide should help you get your Expo Managed Application into the App store. It assumes you have `expo-cli` and `fastalne` gem installed, and a managed app (created through `expo init`) ready.
 
@@ -6,12 +40,12 @@ This guide should help you get your Expo Managed Application into the App store.
 
 This is iOs only for now, for Android I lacked the required access rights - see here for android setup .
 
-## Github Actions
+### Github Actions
 
 This repo contain two Actions taken from https://github.com/marketplace/actions/expo-github-action , you can find them in `.github/workflows/`
 The message in the PR action needs to be changed according to your expo account name and app slug.
 
-## iOs stuff
+### iOs stuff
 
 - create a new bundleId in Certificates, Identifiers & Profiles
 - create a new App in App Store connect
@@ -44,11 +78,11 @@ fastlane pilot upload
 
 If you use 2-factor authentication for your Apple account, you'll need to create a app-specific-password for this (you can do so through AppleId site).
 
-## Multiple Release Channels Workflow
+### Multiple Release Channels Workflow
 
 To avoid the need to rebuild the app with each release, it is recommended to keep a separate release channel for production (maybe even separate for Android and iOs production) and for testing - this allows you to easily deliver OTA updates to existing users as well as test versions to testers without the need to rebuild the native app - you'll have to rebuild the app only to update the Expo SDK. Read more here https://docs.expo.io/versions/latest/distribution/release-channels/ and here https://docs.expo.io/versions/v36.0.0/distribution/advanced-release-channels/.
 
-## CI
+### CI
 
 If you can use GithubActions, this is nice and probably all you need - https://github.com/marketplace/actions/expo-github-action
 
@@ -58,7 +92,7 @@ Fin.
 
 ---
 
-# Android
+## Android
 
 This is quite unrelated to the rest of the readme, just a couple of useful observations when getting an app into google play store.
 
@@ -67,7 +101,7 @@ You'll be required to fill in a few images before you can submit the app - to do
 - https://appicon.co/ with your favourite image
 - https://www.norio.be/android-feature-graphic-generator/
 
-## Privacy policy
+### Privacy policy
 
 Some of the Expo's services allow you to collect user's data, which in turn requires you to haver privacy policy - you can use this https://app-privacy-policy-generator.firebaseapp.com/ to quickly generate one.
 
