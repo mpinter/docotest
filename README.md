@@ -6,6 +6,11 @@ This guide should help you get your Expo Managed Application into the App store.
 
 This is iOs only for now, for Android I lacked the required access rights - see here for android setup .
 
+## Github Actions
+
+This repo contain two Actions taken from https://github.com/marketplace/actions/expo-github-action , you can find them in `.github/workflows/`
+The message in the PR action needs to be changed according to your expo account name and app slug.
+
 ## iOs stuff
 
 - create a new bundleId in Certificates, Identifiers & Profiles
