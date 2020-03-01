@@ -9,6 +9,7 @@ This is iOs only for now, for Android I lacked the required access rights - see 
 ## Github Actions
 
 This repo contain two Actions taken from https://github.com/marketplace/actions/expo-github-action , you can find them in `.github/workflows/`
+The message in the PR action needs to be changed according to your expo account name and app slug.
 
 ## iOs stuff
 
